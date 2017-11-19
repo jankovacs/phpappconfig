@@ -9,7 +9,7 @@ interface ConfiguratorContainerInterface
     /**
      * @param string $environment
      *
-     * @return \JanKovacs\PhpAppConfig\ConfiguratorInterface[]
+     * @return string[]
      */
     public function getConfigurators(string $environment):array;
 

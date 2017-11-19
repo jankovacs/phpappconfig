@@ -40,9 +40,11 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
     {
         $configurators = $container->getConfigurators($this->environment);
 
-        /** @var $configurator \JanKovacs\PhpAppConfig\Configurator\AbstractConfigurator $configurator */
-        foreach ($configurators as $configurator)
+        /** @var $configurator \JanKovacs\PhpAppConfig\Impl\AbstractConfigurator $configurator */
+        foreach ($configurators as $configuratorClass)
         {
+            $configurator = new $configuratorClass($this->environment);
+            $configurator->setConfigurations();
             $this->mergeConfigurations($configurator->getConfigurations());
         }
 

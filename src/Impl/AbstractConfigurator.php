@@ -5,7 +5,6 @@ namespace JanKovacs\PhpAppConfig\Impl;
 use ArrayObject;
 use Exception;
 use JanKovacs\PhpAppConfig\ConfiguratorInterface;
-use JanKovacs\PhpAppConfig\Impl\ConfigurationItem;
 
 abstract class AbstractConfigurator implements ConfiguratorInterface
 {
@@ -25,7 +24,13 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
     {
         $this->environment = $environment;
         $this->configurations = new ArrayObject();
+        $this->setConfigurations();
     }
+
+    /**
+     * @inheritdoc
+     */
+    abstract public function setConfigurations():void;
 
     /**
      * @param string $keyName
@@ -34,7 +39,7 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
      *
      * @throws \Exception
      */
-    public function create(string $keyName, string $typeHint, mixed $value):void
+    protected function create(string $keyName, string $typeHint, mixed $value):void
     {
         if ($this->configurations->offsetExists($keyName))
         {
@@ -45,12 +50,6 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
         $configurationItem->setValue($value);
         $this->configurations->offsetSet($keyName, $configurationItem);
     }
-
-    /**
-     * @param string $keyName
-     * @param mixed $value
-     */
-    abstract public function setValue(string $keyName, mixed $value):void;
 
     /**
      * @return \ArrayObject
