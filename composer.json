@@ -1,0 +1,14 @@
+{
+    "name": "jankovacs/phpappconfig",
+    "description": "Php AppConfig is a tool for a clever and easy to maintain way for configuring your application",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Kovacs",
+            "email": "jan.v.kovacs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
