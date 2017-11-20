@@ -30,7 +30,7 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
     /**
      * @inheritdoc
      */
-    abstract public function setConfigurations():void;
+    abstract protected function setConfigurations():void;
 
     /**
      * @param string $keyName
@@ -46,9 +46,31 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
             throw new Exception('The configuration key '.$keyName.' already exists! Environment: '.$this->environment);
         }
 
-        $configurationItem = new ConfigurationItem($keyName, $typeHint, $this->environment);
+        $configurationItem = new ConfigurationItem($keyName, $typeHint);
         $configurationItem->setValue($value);
         $this->configurations->offsetSet($keyName, $configurationItem);
+    }
+
+    /**
+     * @param string $keyName
+     * @param mixed $value
+     */
+    protected function set(string $keyName, mixed $value):void
+    {
+        if (!$this->configurations->offsetExists($keyName))
+        {
+            throw new Exception('The configuration key '.$keyName.' does not exists! Environment: '.$this->environment);
+        }
+
+        /** @var \JanKovacs\PhpAppConfig\ConfigurationItemInterface $configurationItem */
+        $configurationItem = $this->configurations->offsetGet($keyName);
+        if ($configurationItem->getValue() !== null && $configurationItem->getEnvironment() === $this->environment)
+        {
+            throw new Exception('The value has been set already for the key '.$keyName.' and environment: '.$this->environment);
+        }
+
+        $configurationItem->setEnvironment($this->environment);
+        $configurationItem->setValue($value);
     }
 
     /**

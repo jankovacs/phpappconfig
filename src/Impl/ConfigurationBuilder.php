@@ -44,7 +44,6 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
         foreach ($configurators as $configuratorClass)
         {
             $configurator = new $configuratorClass($this->environment);
-            $configurator->setConfigurations();
             $this->mergeConfigurations($configurator->getConfigurations());
         }
 

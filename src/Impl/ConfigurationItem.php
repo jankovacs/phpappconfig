@@ -2,10 +2,10 @@
 
 namespace JanKovacs\PhpAppConfig\Impl;
 
-use JanKovacs\PhpAppConfig\ConfigItemInterface;
+use JanKovacs\PhpAppConfig\ConfigurationItemInterface;
 use TypeError;
 
-class ConfigurationItem implements ConfigItemInterface
+class ConfigurationItem implements ConfigurationItemInterface
 {
     /** @var string */
     protected $keyName;
@@ -24,8 +24,9 @@ class ConfigurationItem implements ConfigItemInterface
      *
      * @param string $keyName
      * @param string $typeHint
+     * @param string $environment
      */
-    public function __construct(string $keyName, string $typeHint, string $environment)
+    public function __construct(string $keyName, string $typeHint, string $environment = '')
     {
         $this->keyName = $keyName;
         $this->typeHint = $typeHint;
@@ -43,5 +44,21 @@ class ConfigurationItem implements ConfigItemInterface
         }
 
         $this->value = $value;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getValue(): mixed
+    {
+        return $this->value;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getEnvironment(): string
+    {
+        return $this->environment;
     }
 }

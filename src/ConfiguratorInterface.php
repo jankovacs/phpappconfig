@@ -6,11 +6,7 @@ use ArrayObject;
 
 interface ConfiguratorInterface
 {
-    /**
-     * @api sets the needed configurations
-     */
 
-    public function setConfigurations():void;
 
     /**
      * @return \ArrayObject
