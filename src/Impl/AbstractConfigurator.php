@@ -39,7 +39,7 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
      *
      * @throws \Exception
      */
-    protected function create(string $keyName, string $typeHint, mixed $value):void
+    protected function create(string $keyName, string $typeHint, $value):void
     {
         if ($this->configurations->offsetExists($keyName))
         {
@@ -55,7 +55,7 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
      * @param string $keyName
      * @param mixed $value
      */
-    protected function set(string $keyName, mixed $value):void
+    protected function set(string $keyName, $value):void
     {
         if (!$this->configurations->offsetExists($keyName))
         {

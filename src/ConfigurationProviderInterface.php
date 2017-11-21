@@ -13,5 +13,5 @@ interface ConfigurationProviderInterface
      *
      * @return mixed
      */
-    public function get(string $keyName):mixed;
+    public function get(string $keyName);
 }

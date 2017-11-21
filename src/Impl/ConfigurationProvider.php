@@ -25,7 +25,7 @@ class ConfigurationProvider implements ConfigurationProviderInterface
     /**
      * @inheritdoc
      */
-    public function get(string $keyName):mixed
+    public function get(string $keyName)
     {
         if ($this->configurations->offsetExists($keyName))
         {

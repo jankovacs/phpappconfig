@@ -9,13 +9,13 @@ interface ConfigurationItemInterface
      * @api Gets a configuration value
      * @return  mixed
      */
-    public function getValue():mixed;
+    public function getValue();
 
     /**
      * @api Sets a configuration value
      * @param mixed $value
      */
-    public function setValue(mixed $value):void;
+    public function setValue($value):void;
 
     /**
      * @api Gets the environment

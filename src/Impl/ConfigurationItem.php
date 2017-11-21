@@ -36,7 +36,7 @@ class ConfigurationItem implements ConfigurationItemInterface
     /**
      * @inheritdoc
      */
-    public function setValue(mixed $value):void
+    public function setValue($value):void
     {
         $type = gettype($value);
         if ($type !== $this->typeHint) {
@@ -49,7 +49,7 @@ class ConfigurationItem implements ConfigurationItemInterface
     /**
      * @inheritdoc
      */
-    public function getValue(): mixed
+    public function getValue()
     {
         return $this->value;
     }
@@ -61,4 +61,11 @@ class ConfigurationItem implements ConfigurationItemInterface
     {
         return $this->environment;
     }
-}
+
+    /**
+     * @inheritdoc
+     */
+    public function setEnvironment(string $environment): void
+    {
+        $this->environment = $environment;
+}}
