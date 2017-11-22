@@ -29,7 +29,7 @@ class ConfigurationProvider implements ConfigurationProviderInterface
     {
         if ($this->configurations->offsetExists($keyName))
         {
-            return $this->configurations->offsetGet($keyName);
+            return $this->configurations->offsetGet($keyName)->getValue();
         }
 
         throw new Exception('The configuration key '.$keyName.' does not exist!');

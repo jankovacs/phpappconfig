@@ -38,6 +38,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      */
     public function build(ConfiguratorContainerInterface $container):ConfigurationProviderInterface
     {
+        $container->setConfigurators($this->environment);
         $configurators = $container->getConfigurators($this->environment);
 
         /** @var $configurator \JanKovacs\PhpAppConfig\Impl\AbstractConfigurator $configurator */
