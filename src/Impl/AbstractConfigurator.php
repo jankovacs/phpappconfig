@@ -81,4 +81,14 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
         return $this->configurations;
     }
 
+    /**
+     * @param string $variableName
+     *
+     * @return string
+     */
+    private function getEnvironmentVariable(string $variableName):string
+    {
+        return getenv($variableName) ?: '';
+    }
+
 }
