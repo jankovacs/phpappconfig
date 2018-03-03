@@ -86,7 +86,7 @@ abstract class AbstractConfigurator implements ConfiguratorInterface
      *
      * @return string
      */
-    private function getEnvironmentVariable(string $variableName):string
+    protected function getEnvironmentVariable(string $variableName):string
     {
         return getenv($variableName) ?: '';
     }
